@@ -1,3 +1,5 @@
+;Read a character, and display it at the next position on the same line.
+
 .MODEL SMALL
 .STACK 100H 
 .DATA
