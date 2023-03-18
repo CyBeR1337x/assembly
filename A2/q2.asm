@@ -1,0 +1,28 @@
+.MODEL SMALL
+.STACK 100H 
+.CODE
+MAIN PROC 
+    MOV BL, 80H
+    MOV AH, 2
+    MOV CX, 10
+ITERATE:  
+    MOV DL, BL
+    INT 21H
+    MOV DL, ' '
+    INT 21H
+    CMP BL, 0FFH
+    JE EXIT
+    INC BL
+    LOOP ITERATE
+
+    MOV DL, 0AH
+    INT 21H
+    MOV DL, 0DH
+    INT 21H 
+    MOV CX, 10 ;RESET CX
+    JMP ITERATE
+EXIT:
+    MOV AH, 4CH
+    INT 21H    
+    MAIN ENDP
+END MAIN
